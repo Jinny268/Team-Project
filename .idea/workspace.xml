@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4d6ee92-b895-4c1e-8821-e30d46ee3f06" name="변경" comment="setting">
+    <list default="true" id="e4d6ee92-b895-4c1e-8821-e30d46ee3f06" name="변경" comment="9setting">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Method.py" beforeDir="false" afterPath="$PROJECT_DIR$/Method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bomb.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bomb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bomb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shadow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/person.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/._character2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/._character2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/._character3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/._character3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/._character4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/._character4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/character2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/character2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/character3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/character3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/character4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/character4.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +27,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +84,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="bombClass" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bombClass.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -96,6 +132,7 @@
       <list>
         <item itemvalue="Python.Method" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.bombClass" />
       </list>
     </recent_temporary>
   </component>
@@ -111,7 +148,15 @@
       <workItem from="1651805086184" duration="6601000" />
       <workItem from="1651812057794" duration="3456000" />
       <workItem from="1651816978457" duration="37000" />
-      <workItem from="1652193488053" duration="2147000" />
+      <workItem from="1652193488053" duration="2323000" />
+      <workItem from="1652241759533" duration="398000" />
+      <workItem from="1652416392972" duration="3440000" />
+      <workItem from="1652424969869" duration="2481000" />
+      <workItem from="1652427459757" duration="3761000" />
+      <workItem from="1653021228007" duration="754000" />
+      <workItem from="1653375481543" duration="3968000" />
+      <workItem from="1653379544421" duration="50000" />
+      <workItem from="1653466973015" duration="3209000" />
     </task>
     <task id="LOCAL-00001" summary="setting">
       <created>1651805148689</created>
@@ -142,7 +187,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="setting" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Team_Project$Method.coverage" NAME="Method 커버리지 결과" MODIFIED="1652195686738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Team_Project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1651815685081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_Project$Method.coverage" NAME="Method 커버리지 결과" MODIFIED="1653470289520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_Project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1652429490936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
