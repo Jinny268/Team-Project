@@ -1,0 +1,13 @@
+
+        screen,fill((0, 0, 0))
+        score_image = small_font.render('score: {}'.format(score) True , (200. 200, 0))
+        screen.blit(score_image, (10, 10))
+
+        if Game_Over:
+            game_over_image = large_font.render('Game Over', True, (255,0,0))
+            screen.blit(game_over_image, (300 - game_over_image.get_width()//2, 400 - game_over_image.get_height()//2 ))
+
+        pygame.display.update()
+        clock.tick(50) #초당 프레임 수 
+        
+    pygame.quit()
