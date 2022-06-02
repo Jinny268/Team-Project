@@ -1,6 +1,6 @@
 
         screen,fill((0, 0, 0))
-        score_image = small_font.render('score: {}'.format(score) True , (200. 200, 0))
+        score_image = small_font.render('score: {}'.format(score), True , (200. 200, 0))
         screen.blit(score_image, (10, 10))
 
         if Game_Over:
