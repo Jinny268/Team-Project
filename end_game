@@ -1,7 +1,9 @@
 /* whlile run
-
+        score_image = small_font.render('Score: {}'.format(score), True, (255, 245, 0))
+        
         if Game_Over:
-            game_over_image = large_font.render('Game Over', True, (255,0,0))
+            game_over_image1 = large_font.render('Game Over', True, (255,0,0))
+            game_over_image2 = 
             screen.blit(game_over_image, (300 - game_over_image.get_width()//2, 400 - game_over_image.get_height()//2 ))
 
         pygame.display.update()
