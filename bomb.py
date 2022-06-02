@@ -20,7 +20,7 @@ def transformImage(image, scale, rotate):  # 이미지 변화 함수
 
 def createBomb(width, height):
     posX = random.randint(0, width)  # 떨어질 X좌표
-    posY = random.randint(30, height)  # 떨어질 Y좌표
+    posY = random.randint(0, height)  # 떨어질 Y좌표
     rect = pygame.Rect(bomb_image.get_rect())
     rect.top = posY - 200  # 200 위부터 시작
     rect.left = posX
@@ -60,10 +60,12 @@ def explosionImage(cnt):  # 폭발 이미지
 
 
 def init(width, height):
+    global bombs
     global SCREEN_WIDTH
     global SCREEN_HEIGHT
     SCREEN_WIDTH = width
     SCREEN_HEIGHT = height
+    bombs = []
     for _ in range(2):  # 처음 폭탄 수
         bombs.append(createBomb(SCREEN_WIDTH, SCREEN_HEIGHT))
 

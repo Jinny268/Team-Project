@@ -3,6 +3,7 @@
 from turtle import done
 import pygame
 import random
+import StartScreen
 import bomb
 import person
 
@@ -14,6 +15,7 @@ size = [SCREEN_WIDTH, SCREEN_HEIGHT]
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
+StartScreen.init()
 bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 person.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -37,8 +39,8 @@ heart1 = font.render("    ♥", True, (0, 0, 0))
 def runGame():
     run = True
 
-    Gaming = 1  # 시작 버튼을 눌렀을 경우
-    heart = 3  # 시작 버튼을 눌렀을 경우
+    Game_Start = 0
+    heart = 0
     score = 0
     cnt = 0
 
@@ -50,7 +52,19 @@ def runGame():
             if event.type == pygame.QUIT:
                 run = False
             # game 실행 start -------------------
-            if Gaming == 1:
+            if Game_Start == 0:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        Game_Start = 1
+                        heart = 3
+                        score = 0
+                        cnt = 0
+                        bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
+            elif Game_Start == 2:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        Game_Start = 0
+            elif Game_Start == 1:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         person.moveX(-1)
@@ -65,7 +79,9 @@ def runGame():
                         person.toX = 0
                     elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                         person.toY = 0
-        if Gaming == 1:
+        if Game_Start == 0:
+            StartScreen.startScreen(screen)
+        elif Game_Start == 1:
             person.run(screen)
             bomb.run(screen)
             pp = person.getPos()
@@ -77,7 +93,7 @@ def runGame():
                     heart -= 1
                     b['hit'] = True
                     if heart <= 0:
-                        Gaming = False
+                        Game_Start = 2
                     break
             if heart == 3:
                 screen.blit(heart3, (500, 0))
@@ -93,7 +109,9 @@ def runGame():
                 bomb.addBomb()
                 print("addBomb")
             screen.blit(font.render(str(score), True, (0, 0, 0)), (50, 0))
-        # 게임 실행 End -------------------------
+            # 게임 실행 End -------------------------
+        elif Game_Start == 2:
+            StartScreen.endScreen(screen, score)
 
         pygame.display.update()
 

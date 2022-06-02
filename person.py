@@ -33,7 +33,7 @@ toX = 0
 toY = 0
 
 # 이동속도
-characterSpeed = 10
+characterSpeed = 5
 
 f = 0
 moveIndex = 0
