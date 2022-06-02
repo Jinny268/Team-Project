@@ -1,7 +1,4 @@
-
-        screen,fill((0, 0, 0))
-        score_image = small_font.render('score: {}'.format(score), True , (200. 200, 0))
-        screen.blit(score_image, (10, 10))
+/* whlile run
 
         if Game_Over:
             game_over_image = large_font.render('Game Over', True, (255,0,0))
