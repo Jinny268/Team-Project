@@ -6,6 +6,7 @@ import random
 import StartScreen
 import bomb
 import person
+import gift
 
 # 게임판 구성
 pygame.init()
@@ -15,16 +16,15 @@ size = [SCREEN_WIDTH, SCREEN_HEIGHT]
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
-StartScreen.init()
+StartScreen.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 person.init(SCREEN_WIDTH, SCREEN_HEIGHT)
-
+gift.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 # 배경이미지
 # background = pygame.image.load("background.png")
 
-# 난수 생성 - 똥 생성용
-randomNumber = 30
-poSpeed = 10
+# 추가 점수
+score_add = 0
 
 # 게임 플레이 총 시간
 totalTime = 10
@@ -43,7 +43,9 @@ def runGame():
     heart = 0
     score = 0
     cnt = 0
-
+    file = open('record.txt', 'r')
+    records = list(map(int, file.read().split()))
+    file = open('record.txt', 'w')
     while run:
         screen.fill((255, 255, 255))
         dt = clock.tick(30)
@@ -60,6 +62,11 @@ def runGame():
                         score = 0
                         cnt = 0
                         bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
+                    if event.key == 144:  # r키를 눌렀을 경우
+                        1
+                        # 기록 출력 부분
+
+
             elif Game_Start == 2:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
@@ -82,9 +89,17 @@ def runGame():
         if Game_Start == 0:
             StartScreen.startScreen(screen)
         elif Game_Start == 1:
+            gift.run(screen)
             person.run(screen)
             bomb.run(screen)
             pp = person.getPos()
+
+            for g in gift.gifts:
+                if (g['x'] <= pp['x'] <= g['x'] + g['scale']) and (
+                        g['y'] <= pp['y'] <= g['y'] + g['scale']):
+                    gift.gifts.remove(g)
+                    score += random.randint(0, 10)
+
             for b in bomb.explosion:
                 if b['hit']:
                     continue
@@ -94,6 +109,9 @@ def runGame():
                     b['hit'] = True
                     if heart <= 0:
                         Game_Start = 2
+                        records.append(score)
+                        records.sort()
+                        file.write("\n".join(map(str, records)))
                     break
             if heart == 3:
                 screen.blit(heart3, (500, 0))
@@ -105,9 +123,10 @@ def runGame():
             cnt += 1
             if cnt % 10 == 0:
                 score += 1
+            if cnt % 50 == 0:
+                gift.addGift()
             if cnt % 100 == 0:
                 bomb.addBomb()
-                print("addBomb")
             screen.blit(font.render(str(score), True, (0, 0, 0)), (50, 0))
             # 게임 실행 End -------------------------
         elif Game_Start == 2:
@@ -116,6 +135,8 @@ def runGame():
         pygame.display.update()
 
     pygame.quit()
+    # 점수
+    file.close()
 
 
 runGame()
