@@ -18,13 +18,12 @@ clock = pygame.time.Clock()
 StartScreen.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 person.init(SCREEN_WIDTH, SCREEN_HEIGHT)
-
+gift.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 # 배경이미지
 # background = pygame.image.load("background.png")
 
-# 난수 생성 - 똥 생성용
-randomNumber = 30
-poSpeed = 10
+#추가 점수
+score_add = 0
 
 # 게임 플레이 총 시간
 totalTime = 10
@@ -95,6 +94,11 @@ def runGame():
                     continue
                 if (b['rect'].left <= pp['x'] <= b['rect'].left + b['scale']) and (
                         b['rect'].top <= pp['y'] <= b['rect'].top + b['scale']):
+                    score += random.randint(0,10)                   
+                if b['hit']:
+                    continue
+                if (b['rect'].left <= pp['x'] <= b['rect'].left + b['scale']) and (
+                        b['rect'].top <= pp['y'] <= b['rect'].top + b['scale']):
                     heart -= 1
                     b['hit'] = True
                     if heart <= 0:
@@ -121,6 +125,12 @@ def runGame():
         pygame.display.update()
 
     pygame.quit()
-
+    # 점수
+    file = open('test.txt','r')
+    s =file.read()
+    file = open ('test.txt','w')
+    s +=str(score)+"\n"
+    file.write(s)
+    file.close()
 
 runGame()
