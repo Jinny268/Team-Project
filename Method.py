@@ -15,7 +15,7 @@ size = [SCREEN_WIDTH, SCREEN_HEIGHT]
 screen = pygame.display.set_mode(size)
 clock = pygame.time.Clock()
 
-StartScreen.init()
+StartScreen.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 person.init(SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -60,6 +60,11 @@ def runGame():
                         score = 0
                         cnt = 0
                         bomb.init(SCREEN_WIDTH, SCREEN_HEIGHT)
+                    if event.key == 144: # r키를 눌렀을 경우
+                        1
+                        # 기록 출력 부분
+
+
             elif Game_Start == 2:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
