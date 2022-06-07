@@ -82,3 +82,11 @@ def run(screen):
         screen.blit(character[moveIndex % 10], (characterXpos, characterYpos))
     else:
         screen.blit(pygame.transform.flip(character[moveIndex % 10], True, False), (characterXpos, characterYpos))
+
+
+def display(screen):
+    global SCREEN_WIDTH, SCREEN_HEIGHT, characterXpos, characterYpos, toX, toY, f, moveIndex, direct
+    if direct == 1:
+        screen.blit(character[moveIndex % 10], (characterXpos, characterYpos))
+    else:
+        screen.blit(pygame.transform.flip(character[moveIndex % 10], True, False), (characterXpos, characterYpos))

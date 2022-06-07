@@ -96,3 +96,11 @@ def run(screen):
         exp['cnt'] += 1
         if exp['cnt'] >= 15:
             explosion.remove(exp)
+
+
+def display(screen):
+    for bomb in bombs:
+        screen.blit(transformImage(bomb_shadow, bomb['scale'], bomb_rotate[bomb['rotate']]), bomb['shadow'])
+        screen.blit(transformImage(bomb_image, bomb['scale'], bomb_rotate[bomb['rotate']]), bomb['rect'])
+    for exp in explosion:
+        screen.blit(explosionImage(exp['cnt']), exp['rect'])
