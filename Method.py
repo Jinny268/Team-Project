@@ -1,6 +1,5 @@
 # 메소드(9팀) - 팀 프로젝트
 
-from turtle import done
 import pygame
 import random
 import StartScreen
