@@ -19,8 +19,8 @@ global SCREEN_HEIGHT
 
 
 def createGift(width, height):
-    posX = random.randint(0, width)  # 떨어질 X좌표
-    posY = random.randint(0, height)  # 떨어질 Y좌표
+    posX = random.randint(0, width-30)  # 떨어질 X좌표
+    posY = random.randint(0, height-3)  # 떨어질 Y좌표
     rect = pygame.Rect(giftImage.get_rect())
     rect.top = posY
     rect.left = posX
@@ -50,5 +50,10 @@ def run(screen):
         if g['cnt'] >= 300:
             gifts.remove(g)
 
+    for g in gifts:
+        screen.blit(giftImage, g['rect'])
+
+
+def display(screen):
     for g in gifts:
         screen.blit(giftImage, g['rect'])
