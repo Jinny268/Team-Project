@@ -1,4 +1,8 @@
 import pygame
+import gift
+import person
+import bomb
+import random
 
 # 글자 크기 설정
 Big_font = None
@@ -6,6 +10,9 @@ Small_font = None
 Mini_font = None
 WIDTH, HEIGHT = 0, 0
 cnt = 0
+
+heartImg = pygame.transform.scale(pygame.image.load("src/heart.png"), (30, 30))
+heartR = pygame.Rect(heartImg.get_rect())
 
 
 def init(width, height):
@@ -20,6 +27,7 @@ def init(width, height):
     message1 = Big_font.render("BOMB DODGE", True, (0, 0, 0))
     message2 = Small_font.render("Press the space bar to start the game..", True, (0, 191, 255))
     message3 = Mini_font.render("- Made by METHOD -", True, (102, 102, 102))
+
     message4 = Small_font.render("(r) view record", True, (150, 150, 150))
 
 
@@ -63,3 +71,94 @@ def recordScreen(screen, record):
         screen.blit(pr[i], ((WIDTH - pr[i].get_width()) // 2, 300 + 40 * i))
     mv = Small_font.render("Press the space bar to main screen..", True, (0, 191, 255))
     screen.blit(mv, (45, 550))
+
+
+def pauseSceen(screen, score, heart):
+    global WIDTH, HEIGHT
+
+    if heart > 2:
+        heartR.top, heartR.left = (10, WIDTH - 120)
+        screen.blit(heartImg, heartR)
+    if heart > 1:
+        heartR.top, heartR.left = (10, WIDTH - 80)
+        screen.blit(heartImg, heartR)
+    if heart > 0:
+        heartR.top, heartR.left = (10, WIDTH - 40)
+        screen.blit(heartImg, heartR)
+
+    font = pygame.font.SysFont("arial", 30, True, True)
+    smallfont = pygame.font.SysFont("arial", 25, True, True)
+    restart = smallfont.render("(r) restart", True, (0, 0, 0))
+    exit = smallfont.render("(x) end game", True, (0, 0, 0))
+
+    sc = font.render(str(score), True, (0, 0, 0))
+
+    screen.blit(sc, (100 - sc.get_width(), 10))
+    gift.display(screen)
+    person.display(screen)
+    bomb.display(screen)
+    screenCover = pygame.Surface((WIDTH, HEIGHT))
+    screenCover.set_alpha(128)
+    screenCover.fill((150, 150, 150))
+    screen.blit(screenCover, (0, 0))
+    screen.blit(restart, ((WIDTH - restart.get_width()) // 2, 15))
+    screen.blit(exit, ((WIDTH - exit.get_width()) // 2, 550))
+
+
+def gameScreen(screen, score, heart, cnt, records):
+    global WIDTH, HEIGHT
+
+    gift.run(screen)
+    person.run(screen)
+    bomb.run(screen)
+    pp = person.getPos()
+
+    font = pygame.font.SysFont("arial", 30, True, True)
+
+    pygame.draw.rect(screen, (255, 255, 255), [0, 0, WIDTH, 50])
+
+    for g in gift.gifts:
+        if (g['x'] - g['scale'] // 2 <= pp['x'] <= g['x'] + g['scale'] // 2) and (
+                g['y'] - g['scale'] // 2 <= pp['y'] <= g['y'] + g['scale'] // 2):
+            gift.gifts.remove(g)
+            score += random.randint(1, 10) * 10
+
+    for b in bomb.explosion:
+        if b['hit']:
+            continue
+        if (b['rect'].left <= pp['x'] <= b['rect'].left + b['scale']) and (
+                b['rect'].top <= pp['y'] <= b['rect'].top + b['scale']):
+            heart -= 1
+            b['hit'] = True
+            if heart <= 0:
+                file = open('record.txt', 'w')
+                records.append(score)
+                records.sort(key=lambda x: -int(x))
+                file.write("\n".join(map(str, records)))
+                file.write("\n")
+                file.close()
+                return score, heart, cnt, records, False
+    if heart > 2:
+        heartR.top, heartR.left = (10, WIDTH - 120)
+        screen.blit(heartImg, heartR)
+    if heart > 1:
+        heartR.top, heartR.left = (10, WIDTH - 80)
+        screen.blit(heartImg, heartR)
+    if heart > 0:
+        heartR.top, heartR.left = (10, WIDTH - 40)
+        screen.blit(heartImg, heartR)
+
+    smallfont = pygame.font.SysFont("arial", 25, True, True)
+    pause = smallfont.render("(p) pause", True, (0, 0, 0))
+    screen.blit(pause, ((WIDTH - pause.get_width()) // 2, 15))
+
+    cnt += 1
+    if cnt % 10 == 0:
+        score += 10
+    if cnt % 50 == 0:
+        gift.addGift()
+    if cnt % 100 == 0:
+        bomb.addBomb()
+    sc = font.render(str(score), True, (0, 0, 0))
+    screen.blit(sc, (100 - sc.get_width(), 10))
+    return score, heart, cnt, records, True

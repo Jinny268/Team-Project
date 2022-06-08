@@ -1,15 +1,15 @@
 import pygame
 import random
 
-path = "src/"
+path = "src/Coins/"
 
 
 def transformImage(image, scale, rotate):  # 이미지 변화 함수
     transScale = pygame.transform.scale(image, scale)
     return pygame.transform.rotate(transScale, rotate)
 
-
-giftImage = transformImage(pygame.image.load(path + 'coin.png'), (30, 30), 0)
+ImgCnt = 8
+giftImage = [transformImage(pygame.image.load(path + 'coin_0'+str(i)+'.png'), (30, 30), 0) for i in range(1,ImgCnt+1)]
 bomb_rotate = [0, 0, 0, 0]
 
 gifts = []  #
@@ -19,9 +19,9 @@ global SCREEN_HEIGHT
 
 
 def createGift(width, height):
-    posX = random.randint(0, width-30)  # 떨어질 X좌표
-    posY = random.randint(0, height-3)  # 떨어질 Y좌표
-    rect = pygame.Rect(giftImage.get_rect())
+    posX = random.randint(0, width - 30)  # 떨어질 X좌표
+    posY = random.randint(50, height - 30)  # 떨어질 Y좌표
+    rect = pygame.Rect(giftImage[0].get_rect())
     rect.top = posY
     rect.left = posX
     scale = 50
@@ -51,9 +51,9 @@ def run(screen):
             gifts.remove(g)
 
     for g in gifts:
-        screen.blit(giftImage, g['rect'])
+        screen.blit(giftImage[(g['cnt']//2) % len(giftImage)], g['rect'])
 
 
 def display(screen):
     for g in gifts:
-        screen.blit(giftImage, g['rect'])
+        screen.blit(giftImage[(g['cnt']//2) % len(giftImage)], g['rect'])

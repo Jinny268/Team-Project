@@ -186,6 +186,10 @@
       <workItem from="1654346003134" duration="2489000" />
       <workItem from="1654599092901" duration="4639000" />
       <workItem from="1654605336760" duration="2544000" />
+      <workItem from="1654609152524" duration="223000" />
+      <workItem from="1654673323533" duration="5824000" />
+      <workItem from="1654680455849" duration="51000" />
+      <workItem from="1654680545930" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="setting">
       <created>1651805148689</created>
@@ -217,7 +221,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Team_Project$Start_screen.coverage" NAME="Start_screen 커버리지 결과" MODIFIED="1654156717225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Team_Project$Method.coverage" NAME="Method 커버리지 결과" MODIFIED="1654608970848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_Project$Method.coverage" NAME="Method 커버리지 결과" MODIFIED="1654680728036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Team_Project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1652429490936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
