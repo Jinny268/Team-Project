@@ -6,16 +6,9 @@ characterXpos = 0
 characterYpos = 0
 
 # 캐릭터
-character = [pygame.transform.scale(pygame.image.load("src/character0.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character1.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character2.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character3.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character4.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character5.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character6.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character7.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character8.png"), (50, 50)),
-             pygame.transform.scale(pygame.image.load("src/character9.png"), (50, 50))]
+# character = [pygame.transform.scale(pygame.image.load("src/c1/character" + str(i) + ".png"), (50, 50)) for i in
+#              range(1, 7)]
+character = [pygame.transform.scale(pygame.image.load("src/character"+str(i)+".png"), (50, 50)) for i in range(10)]
 characterSize = character[0].get_rect().size  # img크기 불러옴
 characterWidth = characterSize[0]
 characterHeight = characterSize[1]
@@ -59,6 +52,10 @@ def getPos():
 def run(screen):
     global SCREEN_WIDTH, SCREEN_HEIGHT, characterXpos, characterYpos, toX, toY, f, moveIndex, direct
     # 캐릭터 이동 & 프레임맞추기
+    if toX != 0 or toY != 0:
+        f += 1
+        if f % 3 == 0:
+            moveIndex += 1
     characterXpos += toX
     characterYpos += toY
 
@@ -69,24 +66,22 @@ def run(screen):
         characterXpos = SCREEN_WIDTH - characterWidth
 
     # 경계 설정-세로
-    if characterYpos < 0:
-        characterYpos = 0
+    if characterYpos < 50:
+        characterYpos = 50
     elif characterYpos > SCREEN_HEIGHT - characterHeight:
         characterYpos = SCREEN_HEIGHT - characterHeight
 
-    f += 1
-
-    if f % 2 == 0:
-        moveIndex += 1
     if direct == 1:
-        screen.blit(character[moveIndex % 10], (characterXpos, characterYpos))
+        screen.blit(character[moveIndex % len(character)], (characterXpos, characterYpos))
     else:
-        screen.blit(pygame.transform.flip(character[moveIndex % 10], True, False), (characterXpos, characterYpos))
+        screen.blit(pygame.transform.flip(character[moveIndex % len(character)], True, False),
+                    (characterXpos, characterYpos))
 
 
 def display(screen):
     global SCREEN_WIDTH, SCREEN_HEIGHT, characterXpos, characterYpos, toX, toY, f, moveIndex, direct
     if direct == 1:
-        screen.blit(character[moveIndex % 10], (characterXpos, characterYpos))
+        screen.blit(character[moveIndex % len(character)], (characterXpos, characterYpos))
     else:
-        screen.blit(pygame.transform.flip(character[moveIndex % 10], True, False), (characterXpos, characterYpos))
+        screen.blit(pygame.transform.flip(character[moveIndex % len(character)], True, False),
+                    (characterXpos, characterYpos))
